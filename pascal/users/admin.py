@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
 
 from pascal.users.forms import UserAdminChangeForm, UserAdminCreationForm
+from pascal.users.models import Department
 
 User = get_user_model()
 
@@ -15,7 +16,7 @@ class UserAdmin(auth_admin.UserAdmin):
     add_form = UserAdminCreationForm
     fieldsets = (
         (None, {"fields": ("username", "password")}),
-        (_("Personal info"), {"fields": ("name", "email")}),
+        (_("Personal info"), {"fields": ("email",)}),
         (
             _("Permissions"),
             {
@@ -30,5 +31,10 @@ class UserAdmin(auth_admin.UserAdmin):
         ),
         (_("Important dates"), {"fields": ("last_login", "date_joined")}),
     )
-    list_display = ["username", "name", "is_superuser"]
-    search_fields = ["name"]
+    list_display = ["username", "email", "is_superuser"]
+    search_fields = ["username"]
+
+
+@admin.register(Department)
+class DepartmentAdmin(admin.ModelAdmin):
+    list_display = ("id", "name")
