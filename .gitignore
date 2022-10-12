@@ -327,3 +327,5 @@ tags
 pascal/media/
 
 .pytest_cache/
+
+.env

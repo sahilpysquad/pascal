@@ -3,7 +3,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import DetailView, RedirectView, UpdateView
+from django.views.generic import DetailView, RedirectView, UpdateView, CreateView
+
+from pascal.users.forms import DepartmentForm
+from pascal.users.models import Department
 
 User = get_user_model()
 
@@ -46,3 +49,16 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
 
 
 user_redirect_view = UserRedirectView.as_view()
+
+
+class DepartmentView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+    model = Department
+    form_class = DepartmentForm
+    success_url = '/'
+    success_message = _("Department successfully added")
+
+    def get_context_data(self):
+        pass
+
+
+department_add_view = DepartmentView.as_view()
