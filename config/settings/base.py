@@ -335,3 +335,11 @@ SPECTACULAR_SETTINGS = {
 }
 # Your stuff...
 # ------------------------------------------------------------------------------
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'cacms.alert@gmail.com'
+EMAIL_HOST_PASSWORD = 'CACMS@CACMS1234'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = "cacms.alert@gmail.com"
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
