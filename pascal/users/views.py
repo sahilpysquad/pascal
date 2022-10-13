@@ -54,11 +54,11 @@ user_redirect_view = UserRedirectView.as_view()
 class DepartmentView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Department
     form_class = DepartmentForm
-    success_url = '/'
-    success_message = _("Department successfully added")
+    success_url = '/users/department'
+    success_message = _("Department added successfully.")
 
-    def get_context_data(self):
-        pass
-
-
-department_add_view = DepartmentView.as_view()
+    def get_context_data(self, **kwargs):
+        response = super(DepartmentView, self).get_context_data(**kwargs)
+        departments = Department.objects.all()
+        response["departments"] = departments
+        return response

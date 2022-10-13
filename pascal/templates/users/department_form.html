@@ -19,15 +19,19 @@
 <table class="table table">
     <thread class="border-bottom font-weight-bold">
         <tr>
-            <td class="col-md-2" style="text-align: center">No.</td>
-            <td class="col-md-10" style="text-align: center">Name</td>
+            <td class="col-md-2" style="text-align: left">No.</td>
+            <td class="col-md-6" style="text-align: left">Name</td>
+          <td class="col-md-1" style="text-align: left">Edit</td>
+          <td class="col-md-1" style="text-align: left">Delete</td>
         </tr>
     </thread>
     <tbody>
-        {% for form in formset %}
+        {% for department in departments %}
             <tr>
-                <td class="col-md-4" style="text-align: center">{{form.Column1}}</td>
-                <td class="col-md-8" style="text-align: center">{{form.Column2}}</td>
+                <td class="col-md-2" style="text-align: left">{{department.id}}</td>
+                <td class="col-md-6" style="text-align: left">{{department.name}}</td>
+                <td class="col-md-1" style="text-align: left"><button type="submit" class="btn btn-primary">Edit</button></td>
+                <td class="col-md-1" style="text-align: left"><button type="submit" class="btn btn-primary">Delete</button></td>
             </tr>
         {% endfor %}
     </tbody>
