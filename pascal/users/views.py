@@ -62,3 +62,9 @@ class DepartmentView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         departments = Department.objects.all()
         response["departments"] = departments
         return response
+
+    def get_form_kwargs(self, *args, **kwargs):
+        response = super(DepartmentView, self).get_form_kwargs(*args, **kwargs)
+        # response["request"] = self.request
+        print(response)
+        return response

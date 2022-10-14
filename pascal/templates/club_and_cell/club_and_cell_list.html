@@ -4,18 +4,8 @@
 {% block title %}{{ user.username }}{% endblock %}
 
 {% block content %}
-<h1>Add Department</h1>
-<form class="form-horizontal" method="post" action="{% url 'users:add_department' %}">
-  {% csrf_token %}
-  {{ form|crispy }}
-  <div class="control-group">
-    <div class="controls">
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
-  </div>
-</form>
-<br>
-<h1>All Departments</h1>
+<h1>All Clubs and Cells</h1><br>
+<h6>You can add club or cell. <a href="{% url 'club_and_cell:create_club_cell' %}">Click here</a></h6><br>
 <table class="table table">
     <thread class="border-bottom font-weight-bold">
         <tr>
@@ -26,10 +16,10 @@
         </tr>
     </thread>
     <tbody>
-        {% for department in departments %}
+        {% for club_and_cell in clubs_and_cells %}
             <tr>
                 <td class="col-md-2" style="text-align: left">{{forloop.counter}}</td>
-                <td class="col-md-6" style="text-align: left">{{department.name}}</td>
+                <td class="col-md-6" style="text-align: left">{{club_and_cell.name}}</td>
                 <td class="col-md-1" style="text-align: left"><button type="submit" class="btn btn-primary">Edit</button></td>
                 <td class="col-md-1" style="text-align: left"><button type="submit" class="btn btn-primary">Delete</button></td>
             </tr>

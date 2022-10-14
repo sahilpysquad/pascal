@@ -57,9 +57,13 @@
                   {# URL provided by django-allauth/account/urls.py #}
                   <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">{% translate "My Profile" %}</a>
                 </li>
+              <li class="nav-item">
+                  {# URL provided by django-allauth/account/urls.py #}
+                  <a class="nav-link" href="{% url 'club_and_cell:all_clubs_and_cells' %}">{% translate "Clubs and Cells" %}</a>
+                </li>
                 <li class="nav-item">
                   {# URL provided by django-allauth/account/urls.py #}
-                  <a class="nav-link" href="{% url 'users:add-department' %}">{% translate "Department" %}</a>
+                  <a class="nav-link" href="{% url 'users:add_department' %}">{% translate "Departments" %}</a>
                 </li>
               <li class="nav-item">
                   {# URL provided by django-allauth/account/urls.py #}

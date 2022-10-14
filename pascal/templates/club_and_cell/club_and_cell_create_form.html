@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ user.username }}{% endblock %}
+
+{% block content %}
+<h1>Create Club or Cell</h1><br>
+<h6>All Clubs and Cells are <a href="{% url 'club_and_cell:all_clubs_and_cells' %}">here</a></h6><br>
+  <form class="form-horizontal" method="post" action="{% url 'club_and_cell:create_club_cell' %}">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <div class="control-group">
+      <div class="controls">
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+    </div>
+  </form>
+{% endblock %}
