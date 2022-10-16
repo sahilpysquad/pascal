@@ -4,28 +4,34 @@
 {% block title %}{{ user.username }}{% endblock %}
 
 {% block content %}
-<h1>All Clubs and Cells</h1><br>
-<h6>You can add club or cell. <a href="{% url 'club_and_cell:create_club_cell' %}">Click here</a></h6><br>
+<h1>Add Places</h1>
+<form class="form-horizontal" method="post" action="{% url 'events:create_place' %}">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+  </div>
+</form>
+<br>
+<h1>All Places</h1>
 <table class="table table">
     <thread class="border-bottom font-weight-bold">
         <tr>
             <td class="col-md-1" style="text-align: left">No.</td>
-            <td class="col-md-2" style="text-align: left">Name</td>
-            <td class="col-md-2" style="text-align: left">Club or Cell</td>
-            <td class="col-md-2" style="text-align: left">Faculty Head</td>
-            <td class="col-md-2" style="text-align: left">Members Count</td>
+            <td class="col-md-3" style="text-align: left">Name</td>
+            <td class="col-md-6" style="text-align: left">Address</td>
           <td class="col-md-1" style="text-align: left">Edit</td>
           <td class="col-md-1" style="text-align: left">Delete</td>
         </tr>
     </thread>
     <tbody>
-        {% for club_and_cell in clubs_and_cells %}
+        {% for place in places %}
             <tr>
                 <td class="col-md-1" style="text-align: left">{{forloop.counter}}</td>
-                <td class="col-md-2" style="text-align: left">{{club_and_cell.name}}</td>
-                <td class="col-md-2" style="text-align: left">{{club_and_cell.club_or_cell_verbose}}</td>
-                <td class="col-md-2" style="text-align: left">{{club_and_cell.faculty_head.username}}</td>
-                <td class="col-md-2" style="text-align: left">{{club_and_cell.members.all.count}}</td>
+                <td class="col-md-3" style="text-align: left">{{place.name}}</td>
+                <td class="col-md-6" style="text-align: left">{{place.address}}</td>
                 <td class="col-md-1" style="text-align: left"><button type="submit" class="btn btn-primary">Edit</button></td>
                 <td class="col-md-1" style="text-align: left"><button type="submit" class="btn btn-danger">Delete</button></td>
             </tr>

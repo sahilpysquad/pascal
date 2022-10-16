@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ user.username }}{% endblock %}
+
+{% block content %}
+<h1>All Events</h1><br>
+<h6>You can create event. <a href="{% url 'events:create_event' %}">Click here</a></h6><br>
+<table class="table table">
+    <thread class="border-bottom font-weight-bold">
+        <tr>
+            <td class="col-md-1" style="text-align: left">No.</td>
+            <td class="col-md-1" style="text-align: left">Name</td>
+            <td class="col-md-2" style="text-align: left">Clubs - Cells</td>
+            <td class="col-md-2" style="text-align: left">Invited Guests</td>
+            <td class="col-md-2" style="text-align: left">Place</td>
+            <td class="col-md-1" style="text-align: left">Start At</td>
+            <td class="col-md-1" style="text-align: left">End At</td>
+          <td class="col-md-1" style="text-align: left">Edit</td>
+          <td class="col-md-1" style="text-align: left">Delete</td>
+        </tr>
+    </thread>
+    <tbody>
+        {% for event in events %}
+            <tr>
+                <td class="col-md-1" style="text-align: left">{{forloop.counter}}</td>
+                <td class="col-md-1" style="text-align: left">{{event.name}}</td>
+                <td class="col-md-2" style="text-align: left">{{event.club_cell.all|join:", "}}</td>
+                <td class="col-md-2" style="text-align: left">{{event.invited_faculty.all|join:", "}}</td>
+                <td class="col-md-2" style="text-align: left">{{event.place.name}}</td>
+                <td class="col-md-1" style="text-align: left">{{event.start_at|date:"M d, Y h:i A"}}</td>
+                <td class="col-md-1" style="text-align: left">{{event.end_at|date:"M d, Y h:i A" }}</td>
+                <td class="col-md-1" style="text-align: left"><button type="submit" class="btn btn-primary">Edit</button></td>
+                <td class="col-md-1" style="text-align: left"><button type="submit" class="btn btn-danger">Delete</button></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

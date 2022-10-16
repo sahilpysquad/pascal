@@ -10,7 +10,7 @@
   {{ form|crispy }}
   <div class="control-group">
     <div class="controls">
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-success">Submit</button>
     </div>
   </div>
 </form>
@@ -31,7 +31,7 @@
                 <td class="col-md-2" style="text-align: left">{{forloop.counter}}</td>
                 <td class="col-md-6" style="text-align: left">{{department.name}}</td>
                 <td class="col-md-1" style="text-align: left"><button type="submit" class="btn btn-primary">Edit</button></td>
-                <td class="col-md-1" style="text-align: left"><button type="submit" class="btn btn-primary">Delete</button></td>
+                <td class="col-md-1" style="text-align: left"><button type="submit" class="btn btn-danger">Delete</button></td>
             </tr>
         {% endfor %}
     </tbody>

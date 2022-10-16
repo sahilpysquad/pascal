@@ -29,3 +29,6 @@ class ClubCell(models.Model):
             "club_or_cell": dict(self.CLUB_OR_CELL).get(self.club_or_cell)
         }
         return data
+
+    def club_or_cell_verbose(self):
+        return dict(ClubCell.CLUB_OR_CELL)[self.club_or_cell]

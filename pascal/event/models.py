@@ -27,6 +27,9 @@ class Event(models.Model):
     def __str__(self):
         return self.name
 
+    def date_verbose(self):
+        return dict(ClubCell.CLUB_OR_CELL)[self.club_or_cell]
+
 
 class EventDetails(models.Model):
     event = models.OneToOneField(verbose_name="Event", to=Event, on_delete=models.CASCADE, related_name="event")

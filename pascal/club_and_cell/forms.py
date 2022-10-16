@@ -11,5 +11,7 @@ class ClubCellForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(ClubCellForm, self).__init__(*args, **kwargs)
-        faculty_head_choices = [(fh.id, fh.username) for fh in User.objects.filter(user_choice="FH")]
-        self.fields["faculty_head"] = forms.ChoiceField(choices=faculty_head_choices)
+        self.fields["faculty_head"] = forms.ModelChoiceField(User.objects.filter(user_choice="FH", is_active=True))
+        self.fields["members"] = forms.ModelMultipleChoiceField(User.objects.filter(
+            user_choice__in=["FM", "ST"], is_active=True)
+        )

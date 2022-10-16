@@ -24,7 +24,7 @@ user_detail_view = UserDetailView.as_view()
 class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 
     model = User
-    fields = ["name"]
+    fields = ["first_name", "last_name", "department", "sem"]
     success_message = _("Information successfully updated")
 
     def get_success_url(self):
@@ -61,10 +61,4 @@ class DepartmentView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         response = super(DepartmentView, self).get_context_data(**kwargs)
         departments = Department.objects.all()
         response["departments"] = departments
-        return response
-
-    def get_form_kwargs(self, *args, **kwargs):
-        response = super(DepartmentView, self).get_form_kwargs(*args, **kwargs)
-        # response["request"] = self.request
-        print(response)
         return response

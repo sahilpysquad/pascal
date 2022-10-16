@@ -17,7 +17,8 @@ urlpatterns = [
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
     path("users/", include("pascal.users.urls", namespace="users")),
-    path("club-cell/", include("pascal.club_and_cell.urls", namespace="club_cell")),
+    path("club-cells/", include("pascal.club_and_cell.urls", namespace="club_cells")),
+    path("events/", include("pascal.event.urls", namespace="events")),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
