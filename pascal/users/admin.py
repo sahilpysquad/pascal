@@ -21,6 +21,15 @@ class UserAdmin(auth_admin.UserAdmin):
             _("Permissions"),
             {
                 "fields": (
+                    "first_name",
+                    "last_name",
+                    "phone",
+                    "is_phone_verified",
+                    "user_choice",
+                    "status",
+                    "department",
+                    "sem",
+                    "otp",
                     "is_active",
                     "is_staff",
                     "is_superuser",

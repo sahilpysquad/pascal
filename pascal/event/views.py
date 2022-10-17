@@ -33,5 +33,5 @@ class EventCreateView(LoginRequiredMixin, SuccessMessageMixin,CreateView):
     form_class = EventForm
     template_name = "event/event_create_form.html"
     success_message = _("Event created successfully.")
-    success_url = "/event/event-list"
+    success_url = "/events/event-list"
 

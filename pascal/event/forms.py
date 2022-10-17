@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.admin import widgets
 
 from pascal.event.models import Event, Place
 from pascal.users.models import User
@@ -15,8 +16,8 @@ class EventForm(forms.ModelForm):
         model = Event
         fields = ("name", "club_cell", "invited_faculty", "place", "start_at", "end_at")
         widgets = {
-            'start_at': forms.widgets.DateTimeInput(attrs={'type': 'date'}),
-            'end_at': forms.widgets.DateInput(attrs={'type': 'date'})
+            'start_at': forms.widgets.DateTimeInput(attrs={'type': 'datetime-local'}),
+            'end_at': forms.widgets.DateTimeInput(attrs={'type': 'datetime-local'})
         }
 
     def __init__(self, *args, **kwargs):
