@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ user.username }}{% endblock %}
+
+{% block content %}
+<h1>Add Event Details</h1><br>
+<h6>All Events are <a href="{% url 'events:event_list' %}">here</a>.</h6><br>
+  <form class="form-horizontal" method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <div class="control-group">
+      <div class="controls">
+        <button type="submit" class="btn btn-success">Add Event Details</button>
+      </div>
+    </div>
+  </form>
+{% endblock %}

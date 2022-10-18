@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.admin import widgets
 
-from pascal.event.models import Event, Place
+from pascal.event.models import Event, Place, EventDetails
 from pascal.users.models import User
 
 
@@ -25,3 +25,9 @@ class EventForm(forms.ModelForm):
         self.fields["invited_faculty"] = forms.ModelMultipleChoiceField(
             User.objects.filter(user_choice__in=["FH", "FH", "OT"])
         )
+
+
+class EventDetailsForm(forms.ModelForm):
+    class Meta:
+        model = EventDetails
+        fields = ("event", "report_file", "images", "summary")

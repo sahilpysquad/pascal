@@ -1,10 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, UpdateView
 from django.utils.translation import gettext_lazy as _
 
-from pascal.event.forms import PlaceForm, EventForm
-from pascal.event.models import Place, Event
+from pascal.event.forms import PlaceForm, EventForm, EventDetailsForm
+from pascal.event.models import Place, Event, EventDetails
 
 
 class PlaceCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
@@ -35,3 +35,13 @@ class EventCreateView(LoginRequiredMixin, SuccessMessageMixin,CreateView):
     success_message = _("Event created successfully.")
     success_url = "/events/event-list"
 
+
+class EventDetailsCreateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    model = EventDetails
+    form_class = EventDetailsForm
+    template_name = "event/event_details_create_form.html"
+    success_message = _("Event Details added successfully.")
+    success_url = "/events/event-list"
+
+    def get(self, *args, **kwargs):
+        response = None

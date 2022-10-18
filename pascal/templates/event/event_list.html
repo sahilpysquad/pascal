@@ -33,7 +33,7 @@
                 <td class="col-md-1" style="text-align: left">{{event.end_at|date:"M d, Y h:i A" }}</td>
                 <td class="col-md-1" style="text-align: left"><button type="submit" class="btn btn-primary">Edit</button></td>
                 <td class="col-md-1" style="text-align: left"><button type="submit" class="btn btn-danger">Delete</button></td>
-                <td class="col-md-1" style="text-align: left"><button type="submit" class="btn btn-success">Add Details</button></td>
+                <td class="col-md-1" style="text-align: left"><a href="{% url 'events:create_event_details' event.id %}"><button type="submit" class="btn btn-success">Add Details</button></a></td>
             </tr>
         {% endfor %}
     </tbody>
