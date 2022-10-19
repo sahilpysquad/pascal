@@ -31,3 +31,13 @@ class EventDetailsForm(forms.ModelForm):
     class Meta:
         model = EventDetails
         fields = ("event", "report_file", "images", "summary")
+        widgets = {
+            "report_file": forms.widgets.FileInput(),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(EventDetailsForm, self).__init__(*args, **kwargs)
+        self.fields["images"] = forms.ImageField(
+            required=False,
+            widget=forms.ClearableFileInput(attrs={'multiple': True})
+        )

@@ -44,4 +44,6 @@ class EventDetailsCreateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView
     success_url = "/events/event-list"
 
     def get(self, *args, **kwargs):
-        response = None
+        self.model.objects.get_or_create(event_id=kwargs.get("pk"))
+        response = super(EventDetailsCreateView, self).get(*args, **kwargs)
+        return response
